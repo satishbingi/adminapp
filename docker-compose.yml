@@ -1,0 +1,15 @@
+version: "2.0"
+services:  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    depends_on:
+      - nodejs
+  nodejs:
+    image: node:alpine
+    environment: 
+      NODE_ENV: production
+    working_dir: /home/ubuntu/admin
+    restart: always
+    command: npm install;npm run dev
